@@ -1,11 +1,17 @@
-
 <div class="container">
-    <h1>Habit Tracker</h1>
-    
-    <input type="text" id="habitInput" placeholder="Введіть нову звичку..." />
-    <button id="addHabitBtn">Додати звичку</button>
-    
-    <ul id="habitList"></ul>
-    
-    <button id="resetBtn">Обнулити</button>
+  <h1>Habit Tracker</h1>
+  
+  <!-- Поле для введення нової звички -->
+  <input [(ngModel)]="habitInput" placeholder="Введіть нову звичку..." />
+
+  <!-- Кнопка для додавання звички -->
+  <button (click)="addHabit()">Додати звичку</button>
+
+  <!-- Список звичок -->
+  <ul>
+    <li *ngFor="let habit of habits">{{ habit }}</li>
+  </ul>
+
+  <!-- Кнопка для обнулення списку -->
+  <button (click)="resetHabits()">Обнулити</button>
 </div>
