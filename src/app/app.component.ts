@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [FormsModule],
+
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
