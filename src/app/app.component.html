@@ -30,7 +30,7 @@
   <div *ngIf="habits.length > 0">
     <h3>Перевірка списку звичок:</h3>
     <div *ngFor="let habit of habits">
-      <pre>{{ habit | json }}</pre> <!-- Виводимо окремо кожну звичку для відладки -->
+      <p>{{ habit.name }} — {{ habit.date }} — {{ habit.days }} днів</p>
     </div>
   </div>
 </div>
