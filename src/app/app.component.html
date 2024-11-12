@@ -19,10 +19,16 @@
     <ul>
       <li *ngFor="let habit of habits">
         <strong>{{ habit.name }}</strong> — 
-        Дата початку: {{ habit.date }}
+        Дата початку: {{ habit.date }}  
         <br>
         Перервано: {{ habit.days }} днів
       </li>
     </ul>
+  </div>
+
+  <!-- Виведення всіх звичок для перевірки -->
+  <div *ngIf="habits.length > 0">
+    <h3>Перевірка списку звичок:</h3>
+    <pre>{{ habits | json }}</pre> <!-- Виводимо масив для відладки -->
   </div>
 </div>
