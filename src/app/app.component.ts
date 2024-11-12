@@ -47,6 +47,12 @@ export class AppComponent {
   calculateDays(date: string): number {
     const habitDate = new Date(date);
     const currentDate = new Date();
+    
+    // Перевірка, щоб поточна дата була завжди пізніше за дату початку
+    if (habitDate > currentDate) {
+      return 0; // Якщо дата звички в майбутньому, не можна рахувати дні
+    }
+
     const diffTime = currentDate.getTime() - habitDate.getTime();
     return Math.floor(diffTime / (1000 * 3600 * 24));  // Переводимо мілісекунди в дні
   }
