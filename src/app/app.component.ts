@@ -22,13 +22,16 @@ export class AppComponent {
 
   // Функція для додавання звички
   addHabit() {
+    // Перевіряємо, чи є значення в полях
     if (this.habitName && this.habitDate) {
       this.habits.push({
         name: this.habitName,
         date: this.habitDate
       });
-      this.habitName = '';   // Очистка поля
-      this.habitDate = '';   // Очистка поля
+      this.habitName = '';   // Очистка поля для назви
+      this.habitDate = '';   // Очистка поля для дати
+    } else {
+      alert("Будь ласка, заповніть обидва поля!"); // Якщо поля не заповнені
     }
   }
 
