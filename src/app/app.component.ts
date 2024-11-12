@@ -1,17 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
-})
-export class AppComponent {
-  title = 'habittracker';
-}
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'habit-tracker'; // Заголовок для нашого додатку
+  title = 'habit-tracker'; // Заголовок додатку
+  habitInput: string = ''; // Для збереження введеної звички
+  habits: string[] = [];   // Массив для збереження звичок
 
-  // Логіка цього компонента лише для відображення заголовка
-  // та для вбудовування компонента HabitTracker в шаблон
+  // Додаємо звичку в список
+  addHabit() {
+    if (this.habitInput.trim()) {
+      this.habits.push(this.habitInput.trim());
+      this.habitInput = ''; // Очищаємо поле введення після додавання
+    } else {
+      alert('Будь ласка, введіть звичку!');
+    }
+  }
+
+  // Обнуляємо список звичок
+  resetHabits() {
+    this.habits = [];
+  }
 }
+
+
+
