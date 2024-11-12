@@ -13,15 +13,18 @@ export class AppComponent {
   // Обробник зміни назви звички
   onHabitNameChange(event: Event) {
     this.habitName = (event.target as HTMLInputElement).value;
+    console.log("habitName:", this.habitName);  // Виведення для перевірки
   }
 
   // Обробник зміни дати
   onHabitDateChange(event: Event) {
     this.habitDate = (event.target as HTMLInputElement).value;
+    console.log("habitDate:", this.habitDate);  // Виведення для перевірки
   }
 
   // Функція для додавання звички
   addHabit() {
+    console.log("Додаємо звичку:", this.habitName, this.habitDate);  // Виведення перед додаванням
     // Перевірка, чи є назва та дата
     if (this.habitName && this.habitDate) {
       const daysPassed = this.calculateDays(this.habitDate);
@@ -30,6 +33,8 @@ export class AppComponent {
         date: this.habitDate,
         days: daysPassed
       });
+      console.log("Звичка додана", this.habits);  // Виведення після додавання
+
       // Очистка полів після додавання
       this.habitName = '';
       this.habitDate = '';
