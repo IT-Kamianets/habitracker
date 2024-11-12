@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Слідкуй за своїми звичками</h1>
-  
+
   <!-- Форма для введення поганої звички та дати -->
   <div class="habit-form">
     <label for="habit-name">Введіть погану звичку:</label>
@@ -18,7 +18,7 @@
     <ul>
       <li *ngFor="let habit of habits">
         <strong>{{ habit.name }}</strong> — 
-        Дата: {{ formatDate(habit.date) }}  <!-- Використання форматування дати вручну -->
+        Дата: {{ habit.date }}  
         <br>
         Перервано: {{ habit.days }} днів
       </li>

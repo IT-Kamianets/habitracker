@@ -22,41 +22,27 @@ export class AppComponent {
 
   // Функція для додавання звички
   addHabit() {
-    // Перевіряємо, чи є значення в полях
+    // Перевірка, чи є назва та дата
     if (this.habitName && this.habitDate) {
-      // Рахуємо кількість днів від початку звички
       const daysPassed = this.calculateDays(this.habitDate);
       this.habits.push({
         name: this.habitName,
         date: this.habitDate,
         days: daysPassed
       });
-      this.habitName = '';   // Очистка поля для назви
-      this.habitDate = '';   // Очистка поля для дати
+      // Очистка полів після додавання
+      this.habitName = '';
+      this.habitDate = '';
     } else {
       alert("Будь ласка, заповніть обидва поля!"); // Якщо поля не заповнені
     }
   }
 
-  // Функція для обчислення кількості днів без звички
+  // Функція для обчислення кількості днів
   calculateDays(date: string): number {
     const habitDate = new Date(date);
     const currentDate = new Date();
     const diffTime = currentDate.getTime() - habitDate.getTime();
     return Math.floor(diffTime / (1000 * 3600 * 24));  // Переводимо мілісекунди в дні
-  }
-
-  // Функція для форматування дати вручну
-  formatDate(date: string): string {
-    const habitDate = new Date(date);
-    const day = habitDate.getDate();
-    const month = habitDate.getMonth() + 1;  // Місяці від 0 до 11, тому додаємо 1
-    const year = habitDate.getFullYear();
-    const hours = habitDate.getHours();
-    const minutes = habitDate.getMinutes();
-    const seconds = habitDate.getSeconds();
-
-    // Форматуємо дату в формат "ДД.ММ.РРРР, ЧЧ:ММ:СС"
-    return `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
   }
 }
