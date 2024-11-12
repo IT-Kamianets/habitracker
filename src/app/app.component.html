@@ -1,23 +1,25 @@
-<div class="habit-tracker">
-  <h2>Трекер поганих звичок</h2>
-  <form (submit)="addHabit(habitInput.value, dateInput.value)">
-    <div>
-      <label for="habit">Погана звичка:</label>
-      <input type="text" id="habit" #habitInput required>
-    </div>
-    <div>
-      <label for="date">Дата та час:</label>
-      <input type="datetime-local" id="date" #dateInput required>
-    </div>
-    <button type="submit">Додати звичку</button>
-  </form>
+<div class="container">
+  <h1>Слідкуй за своїми звичками</h1>
+  
+  <!-- Форма для введення поганої звички та дати -->
+  <div class="habit-form">
+    <label for="habit-name">Введіть погану звичку:</label>
+    <input id="habit-name" type="text" placeholder="Наприклад: Куріння" (input)="onHabitNameChange($event)">
+    
+    <label for="habit-date">Виберіть дату і час початку:</label>
+    <input id="habit-date" type="datetime-local" (input)="onHabitDateChange($event)">
+    
+    <button (click)="addHabit()">Додати звичку</button>
+  </div>
 
-  <div *ngIf="habits.length > 0">
-    <h3>Список звичок</h3>
+  <!-- Табло для відображення звичок та кількості днів -->
+  <div *ngIf="habits.length > 0" class="habit-list">
+    <h2>Ваші погані звички</h2>
     <ul>
       <li *ngFor="let habit of habits">
-        <strong>{{ habit.name }}</strong> — Дата: {{ habit.date | date:'medium' }}
-        <span> (Пройшло днів: {{ getDaysSince(habit.date) }})</span>
+        <strong>{{ habit.name }}</strong> — 
+        Дата: {{ formatDate(habit.date) }}  <!-- Використання форматування дати вручну -->
+        Перервано: {{ calculateDays(habit.date) }} днів
       </li>
     </ul>
   </div>
