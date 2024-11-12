@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // Імпортуємо FormsModule для двостороннього зв'язку
 
 @Component({
   selector: 'app-root',
-
+  standalone: true, // Вказуємо, що цей компонент є standalone
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports: [FormsModule], // Додаємо FormsModule для підтримки ngModel
 })
 export class AppComponent {
   title = 'habit-tracker'; // Заголовок додатку
