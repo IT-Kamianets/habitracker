@@ -1,42 +1,32 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Імпортуємо FormsModule для двостороннього зв'язку
+
+interface Habit {
+  name: string;
+  date: Date;
+}
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Вказуємо, що цей компонент є standalone
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  imports: [FormsModule], // Додаємо FormsModule для підтримки ngModel
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'habit-tracker'; // Заголовок додатку
-  habitInput: string = ''; // Для введення нової звички
-  habits: { name: string, startDate: Date }[] = []; // Список звичок та їхніх дат початку
+  newHabit: Habit = { name: '', date: new Date() };
+  habits: Habit[] = [];
 
-  // Додаємо звичку в список
   addHabit() {
-    if (this.habitInput.trim()) {
-      const habit = {
-        name: this.habitInput.trim(),
-        startDate: new Date() // Тепер зберігається дата додавання звички
-      };
-      this.habits.push(habit);
-      this.habitInput = ''; // Очищаємо поле після додавання
-    } else {
-      alert('Будь ласка, введіть звичку!');
+    if (this.newHabit.name && this.newHabit.date) {
+      // Додаємо нову звичку до списку
+      this.habits.push({ ...this.newHabit });
+      // Скидаємо форму
+      this.newHabit = { name: '', date: new Date() };
     }
   }
 
-  // Обнуляємо список звичок
-  resetHabits() {
-    this.habits = [];
-  }
-
-  // Рахуємо кількість днів від початку звички
-  calculateDaysSince(habitStartDate: Date): number {
-    const today = new Date();
-    const diffTime = today.getTime() - new Date(habitStartDate).getTime();
-    const diffDays = Math.floor(diffTime / (1000 * 3600 * 24)); // Перетворюємо мілісекунди в дні
-    return diffDays;
+  getDaysSince(date: Date): number {
+    const currentDate = new Date();
+    const habitDate = new Date(date);
+    const timeDifference = currentDate.getTime() - habitDate.getTime();
+    return Math.floor(timeDifference / (1000 * 3600 * 24));
   }
 }

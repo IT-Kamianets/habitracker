@@ -1,19 +1,24 @@
-<div class="app-container">
-  <h1>{{ title }}</h1>
+<div class="habit-tracker">
+  <h2>Трекер поганих звичок</h2>
+  <form (ngSubmit)="addHabit()">
+    <div>
+      <label for="habit">Погана звичка:</label>
+      <input type="text" id="habit" [(ngModel)]="newHabit.name" name="habit" required>
+    </div>
+    <div>
+      <label for="date">Дата та час:</label>
+      <input type="datetime-local" id="date" [(ngModel)]="newHabit.date" name="date" required>
+    </div>
+    <button type="submit">Додати звичку</button>
+  </form>
 
-  <!-- Поле для введення нової звички -->
-  <input [(ngModel)]="habitInput" placeholder="Введіть нову звичку..." />
-
-  <!-- Кнопка для додавання звички -->
-  <button (click)="addHabit()">Додати звичку</button>
-
-  <!-- Список звичок -->
-  <ul>
-    <li *ngFor="let habit of habits">
-      <span>{{ habit.name }} - {{ calculateDaysSince(habit.startDate) }} днів не займаєтесь</span>
-    </li>
-  </ul>
-
-  <!-- Кнопка для обнулення списку -->
-  <button (click)="resetHabits()">Обнулити</button>
+  <div *ngIf="habits.length > 0">
+    <h3>Список звичок</h3>
+    <ul>
+      <li *ngFor="let habit of habits">
+        <strong>{{ habit.name }}</strong> — Дата: {{ habit.date | date:'medium' }}
+        <span> (Пройшло днів: {{ getDaysSince(habit.date) }})</span>
+      </li>
+    </ul>
+  </div>
 </div>
