@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   habitName: string = '';   // Змінна для назви звички
   habitDate: string = '';   // Змінна для дати звички
-  habits: { name: string, date: string }[] = [];  // Масив для збереження звичок
+  habits: { name: string, date: string, days: number }[] = [];  // Масив для збереження звичок
 
   // Обробник зміни назви звички
   onHabitNameChange(event: Event) {
@@ -24,9 +24,12 @@ export class AppComponent {
   addHabit() {
     // Перевіряємо, чи є значення в полях
     if (this.habitName && this.habitDate) {
+      // Рахуємо кількість днів від початку звички
+      const daysPassed = this.calculateDays(this.habitDate);
       this.habits.push({
         name: this.habitName,
-        date: this.habitDate
+        date: this.habitDate,
+        days: daysPassed
       });
       this.habitName = '';   // Очистка поля для назви
       this.habitDate = '';   // Очистка поля для дати

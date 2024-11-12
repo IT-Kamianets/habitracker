@@ -19,7 +19,8 @@
       <li *ngFor="let habit of habits">
         <strong>{{ habit.name }}</strong> — 
         Дата: {{ formatDate(habit.date) }}  <!-- Використання форматування дати вручну -->
-        Перервано: {{ calculateDays(habit.date) }} днів
+        <br>
+        Перервано: {{ habit.days }} днів
       </li>
     </ul>
   </div>
