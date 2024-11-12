@@ -11,15 +11,12 @@ interface Habit {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  newHabit: Habit = { name: '', date: new Date() };
   habits: Habit[] = [];
 
-  addHabit() {
-    if (this.newHabit.name && this.newHabit.date) {
+  addHabit(name: string, date: string) {
+    if (name && date) {
       // Додаємо нову звичку до списку
-      this.habits.push({ ...this.newHabit });
-      // Скидаємо форму
-      this.newHabit = { name: '', date: new Date() };
+      this.habits.push({ name, date: new Date(date) });
     }
   }
 

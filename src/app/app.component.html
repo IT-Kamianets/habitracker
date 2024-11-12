@@ -1,13 +1,13 @@
 <div class="habit-tracker">
   <h2>Трекер поганих звичок</h2>
-  <form (ngSubmit)="addHabit()">
+  <form (submit)="addHabit(habitInput.value, dateInput.value)">
     <div>
       <label for="habit">Погана звичка:</label>
-      <input type="text" id="habit" [(ngModel)]="newHabit.name" name="habit" required>
+      <input type="text" id="habit" #habitInput required>
     </div>
     <div>
       <label for="date">Дата та час:</label>
-      <input type="datetime-local" id="date" [(ngModel)]="newHabit.date" name="date" required>
+      <input type="datetime-local" id="date" #dateInput required>
     </div>
     <button type="submit">Додати звичку</button>
   </form>
