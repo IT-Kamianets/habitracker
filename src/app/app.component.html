@@ -1,8 +1,9 @@
 <div class="container">
   <h1>Слідкуй за своїми звичками</h1>
 
-  <!-- Форма для введення поганої звички та дати -->
+  <!-- Блок для введення нової звички -->
   <div class="habit-form">
+    <h2>Додати нову звичку</h2>
     <label for="habit-name">Введіть погану звичку:</label>
     <input id="habit-name" type="text" placeholder="Наприклад: Куріння" (input)="onHabitNameChange($event)">
     
@@ -12,13 +13,13 @@
     <button (click)="addHabit()">Додати звичку</button>
   </div>
 
-  <!-- Табло для відображення звичок та кількості днів -->
+  <!-- Блок для відображення списку звичок -->
   <div *ngIf="habits.length > 0" class="habit-list">
     <h2>Ваші погані звички</h2>
     <ul>
       <li *ngFor="let habit of habits">
         <strong>{{ habit.name }}</strong> — 
-        Дата: {{ habit.date }}  
+        Дата початку: {{ habit.date }}
         <br>
         Перервано: {{ habit.days }} днів
       </li>
