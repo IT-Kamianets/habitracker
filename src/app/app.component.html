@@ -1,24 +1,18 @@
-<div class="container">
-  <h1>Моніторинг поганих звичок</h1>
+<h1>Моніторинг поганих звичок</h1>
 
-  <!-- Форма для введення нової звички -->
-  <div class="habit-form">
-    <label for="habit-name">Назва поганої звички:</label>
-    <input id="habit-name" #habitNameInput type="text" placeholder="Наприклад: Куріння">
+<div>
+  <label for="habitName">Назва поганої звички:</label>
+  <input id="habitName" #habitName placeholder="Наприклад: Куріння" />
 
-    <label for="habit-date">Дата і час початку:</label>
-    <input id="habit-date" #habitDateInput type="datetime-local">
+  <label for="habitDate">Дата і час початку:</label>
+  <input id="habitDate" #habitDate type="datetime-local" />
 
-    <button (click)="addHabit(habitNameInput.value, habitDateInput.value); habitNameInput.value = ''; habitDateInput.value = ''">Додати звичку</button>
-  </div>
-
-  <!-- Список поганих звичок -->
-  <div *ngIf="habits.length > 0" class="habit-list">
-    <h2>Список звичок</h2>
-    <ul>
-      <li *ngFor="let habit of habits">
-        <strong>{{ habit.name }}</strong> — Перервано: {{ calculateDays(habit.date) }} днів тому
-      </li>
-    </ul>
-  </div>
+  <button (click)="addHabit(habitName.value, habitDate.value)">Додати звичку</button>
 </div>
+
+<h2>Список звичок</h2>
+<ul>
+  <li *ngFor="let habit of habits">
+    <strong>{{ habit.name }}</strong> — Перервано: {{ calculateDays(habit.date) }} днів тому
+  </li>
+</ul>
