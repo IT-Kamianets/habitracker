@@ -1,41 +1,24 @@
 <div class="container">
-  <h1>Слідкуй за своїми звичками</h1>
+  <h1>Моніторинг поганих звичок</h1>
 
-  <!-- Блок для введення нової звички -->
+  <!-- Форма для введення нової звички -->
   <div class="habit-form">
-    <h2>Додати нову звичку</h2>
-    <label for="habit-name">Введіть погану звичку:</label>
-    <input id="habit-name" type="text" placeholder="Наприклад: Куріння" (input)="onHabitNameChange($event)">
-    
-    <label for="habit-date">Виберіть дату і час початку:</label>
-    <input id="habit-date" type="datetime-local" (input)="onHabitDateChange($event)">
-    
-    <button (click)="addHabit()">Додати звичку</button>
+    <label for="habit-name">Назва поганої звички:</label>
+    <input id="habit-name" #habitNameInput type="text" placeholder="Наприклад: Куріння">
+
+    <label for="habit-date">Дата і час початку:</label>
+    <input id="habit-date" #habitDateInput type="datetime-local">
+
+    <button (click)="addHabit(habitNameInput.value, habitDateInput.value); habitNameInput.value = ''; habitDateInput.value = ''">Додати звичку</button>
   </div>
 
-  <!-- Блок для відображення списку звичок -->
+  <!-- Список поганих звичок -->
   <div *ngIf="habits.length > 0" class="habit-list">
-    <h2>Ваші погані звички</h2>
+    <h2>Список звичок</h2>
     <ul>
       <li *ngFor="let habit of habits">
-        <strong>{{ habit.name }}</strong> — 
-        Дата початку: {{ habit.date }}  
-        <br>
-        Перервано: {{ habit.days }} днів
+        <strong>{{ habit.name }}</strong> — Перервано: {{ calculateDays(habit.date) }} днів тому
       </li>
     </ul>
-  </div>
-
-  <!-- Виведення для перевірки, чи масив звичок не порожній -->
-  <div *ngIf="habits.length === 0">
-    <h3>Ще не додано жодної звички.</h3>
-  </div>
-
-  <!-- Для відладки - виведення в консоль -->
-  <div *ngIf="habits.length > 0">
-    <h3>Перевірка списку звичок:</h3>
-    <div *ngFor="let habit of habits">
-      <p>{{ habit.name }} — {{ habit.date }} — {{ habit.days }} днів</p>
-    </div>
   </div>
 </div>

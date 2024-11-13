@@ -1,56 +1,33 @@
-.habit-tracker {
+.container {
   max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  h2, h3 {
-    text-align: center;
-  }
+.habit-form {
+  margin: 20px 0;
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
+.habit-form input {
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+}
 
-    div {
-      margin-bottom: 10px;
-    }
+.habit-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    label {
-      font-weight: bold;
-    }
+.habit-list {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+}
 
-    input {
-      padding: 5px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      align-self: center;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-    }
-  }
+.habit-list li {
+  font-size: 18px;
+  margin: 10px 0;
 }
